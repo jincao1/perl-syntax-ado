@@ -3,9 +3,9 @@
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
     "version": "1.0.0",
-    "name": "Perl Syntax Highlight",
-    "description": "Enables syntax highlighting of Perl module (.pm) and Perl test (.t) files.",
-    "public": false,
+    "name": "Perl Language Syntax Highlight",
+    "description": "Enables syntax highlighting of Perl files.",
+    "public": true,
     "categories": [
         "Azure Repos"
     ],
@@ -14,6 +14,18 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
+    "icons": {
+        "default": "perl-logo.png"
+    },
+    "content": {
+        "details": {
+            "path": "overview.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/jincao1/perl-syntax-ado"
+    },
     "contributions": [
         {
             "id": "perl-language",
@@ -24,7 +36,10 @@
             "properties": {
                 "extensions": [
                     ".pm",
-                    ".t"
+                    ".t",
+                    ".cgi",
+                    ".psgi",
+                    ".pod"
                 ],
                 "language": {
                     "defaultToken": "",

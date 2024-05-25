@@ -1,10 +1,12 @@
 # Perl Syntax Highlighting for Azure DevOps
 
-This is a bare bone extension providing syntax highlighting to Perl modules (`.pm`) and Perl test (`.t`) files.
-It was created because Azure DevOps currently only has `.pl` extensions registered to have syntax highlighting in the Monaco editor.
+This is a bare bone extension providing syntax highlighting to Perl file extensions that does not have language associations in Azure DevOps.
 
-At the time of writing, Microsoft and Azure DevOps for some reason is not associating other common Perl files with their corresponding extensions resulting in them rendered as plain text.
-This aims to address that.
+At the time of writing, Microsoft and Azure DevOps for some reason is only associating `.pl` files with Perl. All other common Perl extensions were not included. This aims to address that.
+
+# Overview
+
+See [Overview](overview.md) for full details on what extensions this is enabled on.
 
 # Building Extension
 
