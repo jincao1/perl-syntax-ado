@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": true,
@@ -485,11 +485,14 @@
                         "tr",
                         "y"
                     ],
-                    "escapes": "/\\\\(?:[abfnrtv\\\\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})/",
+                    "escapes": "\\\\(?:[abfnrtv\\\\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
                     "tokenizer": {
                         "root": [
                             {
                                 "include": "@whitespace"
+                            },
+                            {
+                                "include": "@numbers"
                             },
                             [
                                 "[a-zA-Z\\-_][\\w\\-_]*",
@@ -539,9 +542,6 @@
                                 "@symbols",
                                 "operators"
                             ],
-                            {
-                                "include": "@numbers"
-                            },
                             [
                                 "[,;]",
                                 "delimiter"
