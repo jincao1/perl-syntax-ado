@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": true,
@@ -25,6 +25,17 @@
     "repository": {
         "type": "git",
         "uri": "https://github.com/jincao1/perl-syntax-ado"
+    },
+    "links": {
+        "support": {
+            "uri": "https://github.com/jincao1/perl-syntax-ado/issues"
+        },
+        "license": {
+            "uri": "https://github.com/jincao1/perl-syntax-ado/blob/main/LICENSE.txt"
+        },
+        "privacypolicy": {
+            "uri": "https://github.com/jincao1/perl-syntax-ado/blob/main/PRIVACY.md"
+        }
     },
     "contributions": [
         {
