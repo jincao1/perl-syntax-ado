@@ -5,7 +5,7 @@
     "version": "1.0.2",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
-    "public": true,
+    "public": false,
     "categories": [
         "Azure Repos"
     ],
