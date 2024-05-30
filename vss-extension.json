@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -521,7 +521,7 @@
                                 }
                             ],
                             [
-                                "[\\$@%][*@#?\\+\\-\\$!\\w\\\\\\^><~:;\\.]+",
+                                "[$%@]+(?!\")(\\^\\w\\b|#\\w+(::\\w+)*|\\{\\w+\\}|\\w+(::\\w*)*)(?![A-Za-z])(?![@$%])|[$%@](?!\")[^\\s\\w{=]|\\$=|\\$\"",
                                 {
                                     "cases": {
                                         "@builtinVariables": "variable.predefined",
