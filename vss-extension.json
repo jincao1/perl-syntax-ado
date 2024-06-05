@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -544,6 +544,13 @@
                             [
                                 "[{}\\[\\]()]",
                                 "@brackets"
+                            ],
+                            [
+                                "\\/(?=([^\\\\\\/]|\\\\.)+\\/([msixpodualngcer]*)(\\s*)(\\.|;|,|\\)|\\]|\\}|$)?)",
+                                {
+                                    "token": "regexp.delim",
+                                    "next": "@qregexpMatch./"
+                                }
                             ],
                             [
                                 "@symbols",
