@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -546,10 +546,6 @@
                                 "@brackets"
                             ],
                             [
-                                "[\\/](?:(?:\\[(?:\\\\]|[^\\]])+\\])|(?:\\\\\\/|[^\\]\\/]))*[\\/]\\w*\\s*(?=[).,;]|$)",
-                                "regexp"
-                            ],
-                            [
                                 "@symbols",
                                 "operators"
                             ],
@@ -639,101 +635,108 @@
                         ],
                         "quotedConstructs": [
                             [
-                                "(q|qw|tr|y)\\s*\\(",
+                                "(q|qw)\\s*\\(",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.(.)"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)\\s*\\[",
+                                "(q|qw)\\s*\\[",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.[.]"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)\\s*\\{",
+                                "(q|qw)\\s*\\{",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.{.}"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)\\s*<",
+                                "(q|qw)\\s*<",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.<.>"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)#",
+                                "(q|qw)#",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.#.#"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)\\s*([^A-Za-z0-9#\\s])",
+                                "(q|qw)\\s*([^A-Za-z0-9#\\s])",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.$2.$2"
                                 }
                             ],
                             [
-                                "(q|qw|tr|y)\\s+(\\w)",
+                                "(q|qw)\\s+(\\w)",
                                 {
                                     "token": "string.delim",
                                     "switchTo": "@qstring.$2.$2"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s*\\(",
+                                "(qr|m)\\s*\\(",
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexp.(.)"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s*\\[",
+                                "(qr|m)\\s*\\[",
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexp.[.]"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s*\\{",
+                                "(qr|m)\\s*\\{",
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexp.{.}"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s*<",
+                                "(qr|m)\\s*<",
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexp.<.>"
                                 }
                             ],
                             [
-                                "(qr|m|s)#",
+                                "(qr|m)#",
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexp.#.#"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s*([^A-Za-z0-9_#\\s])",
+                                "(qr|m)\\s*([^A-Za-z0-9_#\\s])",
                                 {
                                     "token": "regexp.delim",
-                                    "switchTo": "@qregexp.$2.$2"
+                                    "switchTo": "@qregexpMatch.$2"
                                 }
                             ],
                             [
-                                "(qr|m|s)\\s+(\\w)",
+                                "(qr|m)\\s+(\\w)",
                                 {
                                     "token": "regexp.delim",
-                                    "switchTo": "@qregexp.$2.$2"
+                                    "switchTo": "@qregexpMatch.$2"
+                                }
+                            ],
+                            [
+                                "(s|tr|y)\\s*(.)",
+                                {
+                                    "token": "regexp.delim",
+                                    "switchTo": "@sregexp.$2"
                                 }
                             ],
                             [
@@ -833,9 +836,72 @@
                                 }
                             ]
                         ],
+                        "qregexpMatch": [
+                            {
+                                "include": "@variables"
+                            },
+                            [
+                                "\\\\.",
+                                "regexp.escape"
+                            ],
+                            [
+                                ".",
+                                {
+                                    "cases": {
+                                        "$#==$S2": {
+                                            "token": "regexp.delim",
+                                            "next": "@regexpModifiers"
+                                        },
+                                        "@default": "regexp"
+                                    }
+                                }
+                            ]
+                        ],
+                        "sregexp": [
+                            {
+                                "include": "@variables"
+                            },
+                            [
+                                "\\\\.",
+                                "regexp.escape"
+                            ],
+                            [
+                                ".",
+                                {
+                                    "cases": {
+                                        "$#==$S2": {
+                                            "token": "regexp.delim",
+                                            "next": "@regexSubTr.$S2"
+                                        },
+                                        "@default": "regexp"
+                                    }
+                                }
+                            ]
+                        ],
+                        "regexSubTr": [
+                            {
+                                "include": "@variables"
+                            },
+                            [
+                                "\\\\.",
+                                "regexp.escape"
+                            ],
+                            [
+                                ".",
+                                {
+                                    "cases": {
+                                        "$#==$S2": {
+                                            "token": "regexp.delim",
+                                            "next": "@regexpModifiers"
+                                        },
+                                        "@default": "regexp"
+                                    }
+                                }
+                            ]
+                        ],
                         "regexpModifiers": [
                             [
-                                "[msixpodualngcer]+",
+                                "[msixpodualngcer]*",
                                 {
                                     "token": "regexp.modifier",
                                     "next": "@popall"
