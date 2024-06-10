@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -925,14 +925,37 @@
                         ],
                         "heredoc": [
                             [
-                                "<<\\s*['\"`]?([\\w\\-]+)['\"`]?",
+                                "<<*['\"`]?([\\w\\-]+)['\"`]?",
                                 {
                                     "token": "string.heredoc.delimiter",
-                                    "next": "@heredocBody.$1"
+                                    "next": "@heredocBodyStart.$1"
+                                }
+                            ]
+                        ],
+                        "heredocBodyStart": [
+                            [
+                                "\\s*;",
+                                "delimiter"
+                            ],
+                            [
+                                "\\s*(#.*$)",
+                                {
+                                    "token": "comment",
+                                    "next": "@heredocBody.$S2"
+                                }
+                            ],
+                            [
+                                ".",
+                                {
+                                    "token": "string.heredoc",
+                                    "next": "@heredocBody.$S2"
                                 }
                             ]
                         ],
                         "heredocBody": [
+                            {
+                                "include": "@variables"
+                            },
                             [
                                 "^([\\w\\-]+)$",
                                 {
