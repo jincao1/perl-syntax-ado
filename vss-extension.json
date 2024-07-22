@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -484,7 +484,7 @@
                         "$^RE_DEBUG_FLAGS",
                         "$LAST_PAREN_MATCH"
                     ],
-                    "symbols": "[:+-^*$&%@=<>!?|/~.]",
+                    "symbols": "[:+\\-\\^*$&%@=<>!?|\\/~\\.]",
                     "quoteLikeOps": [
                         "qr",
                         "m",
@@ -544,6 +544,10 @@
                             [
                                 "[{}\\[\\]()]",
                                 "@brackets"
+                            ],
+                            [
+                                "\\/\\/",
+                                "operators"
                             ],
                             [
                                 "\\/(?=([^\\\\\\/]|\\\\.)+\\/([msixpodualngcer]*)(\\s*)(\\.|;|,|\\)|\\]|\\}|$)?)",
@@ -737,6 +741,13 @@
                                 {
                                     "token": "regexp.delim",
                                     "switchTo": "@qregexpMatch.$2"
+                                }
+                            ],
+                            [
+                                "(s|tr|y)\\s*\\[",
+                                {
+                                    "token": "regexp.delim",
+                                    "switchTo": "@sregexp.]"
                                 }
                             ],
                             [
