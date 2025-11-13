@@ -442,7 +442,14 @@ let language = {
     tokenizer: {
         root: [
             { include: '@whitespace' },
-
+            { include: "@numbers" },
+            // Consume quote like operators for hash keys in this format, they get messed up if used later.
+            [
+                /(qr|m|s|q|qq|qx|qw|tr|y)(\s*)(=>)/, ['', 'white', 'operators']
+            ],
+            [
+                /(qr|m|s|q|qq|qx|qw|tr|y)(\s*)(})/, ['', 'white', 'bracket']
+            ],
             [
                 /[a-zA-Z\-_][\w\-_]*/,
                 {

@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "perl-syntax-ado",
     "publisher": "JinCao",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "name": "Perl Language Syntax Highlight",
     "description": "Enables syntax highlighting of Perl files.",
     "public": false,
@@ -505,6 +505,12 @@
                             {
                                 "include": "@numbers"
                             },
+                            [
+                                "(qr|m|s|q|qq|qx|qw|tr|y)(\\s*)(=>)", ["", "white", "operators"]
+                            ],
+                            [
+                                "(qr|m|s|q|qq|qx|qw|tr|y)(\\s*)(})", ["", "white", "bracket"]
+                            ],
                             [
                                 "[a-zA-Z\\-_][\\w\\-_]*",
                                 {
